@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Personal</title>
+<link rel="stylesheet" href="home.css">
+</head>
+<body>
+<div class="search-container">
+  <div class="search-box">
+    <i class="fas fa-search"></i>
+    <input type="text" placeholder="search...">
+  </div>
+</div>
+  
+  <!-- Logo that opens sidebar -->
+  <img id="logo" src="logo.png.jpg" alt="Logo" onclick="toggleSidebar()" />
+
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+    <div id="menu-options"></div>
+  </div>
+
+  <!-- Overlay -->
+  <div id="overlay" class="overlay" onclick="closeSidebar()"></div>
+
+
+    
+
+    <div id="hamburger" class="hamburger">
+<span></span>
+<span></span>
+<span></span>
+    </div>
+    
+    <nav id="nav" class="nav">
+        <ul>
+        <li><a href="home.html">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+        <li><a href="review.html">Review</a></li>
+        <li><a >logout</a></li>
+        <li><a>Help</a></li>
+      <div class="btn2-class" >
+   <button class="btn2" onclick="window.location.href='login.html'">Login</button> 
+    </div>
+        </ul>
+    </nav>
+
+    
+    
+    <div class="main-class" onclick="toggleMenu()">
+<h1 class="main">Welcome</h1>
+    </div>
+<div class="gain">
+<ul>
+    <li>Hi! Dear Customers</li> 
+    <li>This Website Is For You</li>
+</ul>
+</div>
+<div class="btn-class">
+<a class="btn" onclick="window.location.href='click.html';">click Here</a>
+</div>
+
+
+<div class="logo-class">
+<a href="https://in.images.search.yahoo.com/search/images;_ylt=Awr1SSp6loBoRAIAmJC7HAx.;_ylu=Y29sbwNzZzMEcG9zAzEEdnRpZAMEc2VjA3Nj?p=pig+images&fr=mcafee"
+>
+    <img class="logo" src="logo.png.jpg">
+</a>
+<hr style="border: none; height: 2px; background-color: #333;">
+</div>
+
+<div class="article">
+  <article>
+    <h3>About Our Service</h3>
+    <p> 
+     This is good Website For Any News Or Any IMP Data.<br /> This Website Is Very Usefull To Us 
+    </p>
+  </article>
+  <article>
+    <h3>
+      About Designer
+    </h3>
+<p>
+<li>His Name P.Rithwick Sai,Born On (14-sep-2007),He lives In Kaligiri,Nellore Dist, Andhra Pradesh, India.</li> <br />
+<li>During Inter Studies He Got An Idea Like This, I Creat A Website And Help To All Peoples.</li> <br />
+  <li>So, This Website Disined By Him.</li>
+</p>
+  </article>
+  <article>
+<h3>
+  About Author
+</h3>
+<p>
+  His Name P.Rithwick Sai
+</p>
+  </article>
+</div>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.getElementById("hamburger");
+    const nav = document.getElementById("nav");
+
+    // Toggle nav open/close
+    hamburger.addEventListener("click", (e) => {
+      e.stopPropagation(); // Prevent closing immediately
+      nav.classList.toggle("open");
+      hamburger.classList.toggle("active");
+    });
+
+    // Close nav when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+        nav.classList.remove("open");
+        hamburger.classList.remove("active");
+      }
+    });
+  });
+
+const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    const menu = document.getElementById("menu-options");
+
+    function toggleSidebar() {
+      if (sidebar.style.width === "250px") {
+        closeSidebar();
+      } else {
+        generateMenu();
+        sidebar.style.width = "250px";
+        overlay.style.display = "block";
+      }
+    }
+
+    function closeSidebar() {
+      sidebar.style.width = "0";
+      overlay.style.display = "none";
+    }
+
+    function generateMenu() {
+      const profile = JSON.parse(localStorage.getItem("customerProfile"));
+      menu.innerHTML = ""; // Clear old buttons
+
+      if (profile) {
+        menu.innerHTML += `
+          <button onclick="goTo('view-profile.html')">View Profile</button>
+          <button onclick="goTo('edit-profile.html')">Edit Profile</button>
+        `;
+      } else {
+        menu.innerHTML += `
+          <button onclick="goTo('create-profile.html')">Create Profile</button>
+        `;
+      }
+    }
+
+    function goTo(page) {
+      closeSidebar();
+      window.location.href = page;
+    }
+
+
+    // Get saved coins from localStorage and show it
+    const savedCoins = localStorage.getItem('coins') || 0;
+    document.getElementById('coinCount').textContent = savedCoins;
+
+
+</script>
+</body>
+</html>
