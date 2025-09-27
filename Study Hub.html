@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            html {
+                background-color: aqua;
+            }
+            p {
+                text-align: center;
+                color: white;
+                font-size: 30px;
+            }
+            h1 {
+                text-align: center;
+                color: white;
+                font-size: 60px;
+            }
+.top-background {
+ position: relative;
+    width: 700px;
+    height: 200px;
+    background-color: #7E8274;
+     left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Main button */
+    .main-btn {
+        position: relative;
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      
+        }
+
+    /* Dropdown container */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Dropdown content (hidden by default) */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-top: 5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      overflow: hidden;
+      flex-direction: column;
+    }
+
+    /* Each button inside dropdown */
+    .dropdown-content a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      background: #28a745;
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+    }
+
+    .dropdown-content a:hover {
+      background: #218838;
+    }
+
+    /* Last button no border */
+    .dropdown-content a:last-child {
+      border-bottom: none;
+    }
+        </style>
+    </head>
+    <body>
+        <div class="top-background">
+            <h1>Study Hub</h1>
+            <p>This Website is For Engineering Students</p>
+        </div>
+
+        <div class="dropdown">
+    <button class="main-btn" onclick="toggleDropdown('dropdown1')">Courses</button>
+    
+    <div class="dropdown-content" id="dropdown1">
+      <a href="" target="_blank">CSE</a>
+      <a href="" target="_blank">CSE (AI&ML)</a>
+      <a href="" target="_blank">ECE</a>
+      <a href="" target="_blank">EEE</a>
+      <a href="" target="_blank">CA</a>
+      <a href="" target="_blank">MECH</a>
+      <a href="" target="_blank">CHEMICAL</a>
+      <a href="" target="_blank">AI&ML</a>
+      <a href="" target="_blank">CIVIL</a>
+      <a href="" target="_blank">AGRICUL</a>
+      <a href="" target="_blank">DATA SCIENTIST</a>
+      <a href="" target="_blank">OTHER</a>
+      <!-- ✅ You can add more <a> tags here -->
+    </div>
+  </div>
+
+
+  <div class="dropdown">
+    <button class="main-btn" onclick="toggleDropdown('dropdown2')">Study Planner</button>
+    <div class="dropdown-content" id="dropdown2">
+    <a href="" target="_blank">click here</a>
+    </div>
+  </div>
+
+<div class="dropdown">
+    <button class="main-btn" onclick="toggleDropdown('dropdown3')">Software Tutorials</button>
+    <div class="dropdown-content" id="dropdown3">
+    <a href="" target="_blank">click here</a>
+    </div>
+  </div>
+  
+<div class="dropdown">
+    <button class="main-btn" onclick="toggleDropdown('dropdown4')">AI Tools</button>
+    <div class="dropdown-content" id="dropdown4">
+    <a href="" target="_blank">click here</a>
+    </div>
+  </div>
+
+
+<script>
+  function toggleDropdown(id) {
+    let dropdown = document.getElementById(id);
+    let button = dropdown.previousElementSibling;
+
+    // Close all dropdowns first
+    document.querySelectorAll(".dropdown-content").forEach(d => d.style.display = "none");
+
+    // Toggle the clicked one
+    if (dropdown.style.display === "flex") {
+      dropdown.style.display = "none";
+    } else {
+      dropdown.style.display = "flex";
+      dropdown.style.width = button.offsetWidth + "px"; // same width as button
+    }
+  }
+
+  // Close dropdown if clicking outside
+  window.onclick = function(event) {
+    if (!event.target.matches('.main-btn')) {
+      document.querySelectorAll(".dropdown-content").forEach(d => d.style.display = "none");
+    }
+  }
+</script>
+    </body>
+</html>
